@@ -8,7 +8,7 @@ echo -E ""
     echo "2.知晓Cloudflare Global API Key"
     echo "3.域名已通过Cloudflare进行解析到当前服务器"
     echo "4.该脚本申请证书默认安装路径为/root/cert目录"
-    confirm "我已确认以上内容[y/n]" "y"
+    read -p "我已确认以上内容[y/n]: " confirmation && [ "$confirmation" == "y" ] || exit 1
     cd ~
         echo "安装Acme脚本"
         curl https://get.acme.sh | sh
