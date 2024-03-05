@@ -1,8 +1,7 @@
 #脚本来源 https://github.com/vaxilu/x-ui
 #功能实现 https://github.com/FranzKafkaYu
 
-ssl_cert() {
-    echo -E ""
+echo -E ""
     LOGD "******使用说明******"
     LOGI "该脚本将使用Acme脚本申请证书,使用时需保证:"
     LOGI "1.知晓Cloudflare 注册邮箱"
@@ -10,8 +9,7 @@ ssl_cert() {
     LOGI "3.域名已通过Cloudflare进行解析到当前服务器"
     LOGI "4.该脚本申请证书默认安装路径为/root/cert目录"
     confirm "我已确认以上内容[y/n]" "y"
-    if [ $? -eq 0 ]; then
-        cd ~
+    cd ~
         LOGI "安装Acme脚本"
         curl https://get.acme.sh | sh
         if [ $? -ne 0 ]; then
@@ -71,7 +69,3 @@ ssl_cert() {
             ls -lah cert
             chmod 755 $certPath
         fi
-    else
-        show_menu
-    fi
-}
